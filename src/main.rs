@@ -1,13 +1,17 @@
 #[macro_use] extern crate nickel;
-#[warn(unreachable_code)]
 use std::collections::HashMap;
-use nickel::Nickel;
-include!("welcome.rs");
+use nickel::{Nickel, HttpRouter};
 
 fn main() {
     let mut server = Nickel::new();
 
-    Welcome.index(&mut server);
+    server.utilize(router! {
+        get "**" => |_req, _res| {
+            let mut data = HashMap::new();
+            data.insert("copyright_year", "2017");
+            return _res.render("templates/welcome/comingsoon.mustache", &data);
+        }
+    });
 
-    let _ = server.listen("127.0.0.1:6767");
+    server.listen("127.0.0.1:6767");
 }
