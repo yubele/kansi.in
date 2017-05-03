@@ -1,13 +1,13 @@
+struct Template {
+    path: &'static str,
+    data: HashMap<&'static str, &'static str>
+}
 struct Welcome;
-#[allow(unreachable_code)]
+
 impl Welcome {
-    pub fn index(self, server: &mut nickel::Nickel) {
-        server.utilize(router! {
-            get "/" => |_req, res| {
-                let mut data = HashMap::new();
-                data.insert("copyright_year", "2017");
-                return res.render("templates/welcome/comingsoon.mustache", &data);
-            }
-        });
+    pub fn index(&mut self) -> Template {
+        let mut data = HashMap::new();
+        data.insert("copyright_year", "2017");
+        Template{ path: "templates/welcome/commingsoon.mustache", data: data }
     }
 }
