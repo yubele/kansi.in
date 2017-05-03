@@ -8,6 +8,6 @@ impl Welcome {
     pub fn index(&mut self) -> Template {
         let mut data = HashMap::new();
         data.insert("copyright_year", "2017");
-        Template{ path: "templates/welcome/commingsoon.mustache", data: data }
+        Template{ path: "templates/welcome/comingsoon.mustache", data: data }
     }
 }
