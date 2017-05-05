@@ -2,7 +2,9 @@
 name = "kansi"
 version = "0.1.0"
 dependencies = [
+ "mustache 0.6.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "nickel 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-serialize 0.3.23 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
