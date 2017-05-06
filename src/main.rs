@@ -13,7 +13,7 @@ fn main() {
     let mut server = Nickel::new();
     #[allow(unreachable_code)]
     server.get("/", middleware! { |_req, res|
-        let default_layout = Layout.get_layout();
+        let default_layout = Layout.default_layout();
         let content_mustache = Welcome.index(default_layout);
         let mut data = HashMap::new();
 
