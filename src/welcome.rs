@@ -1,20 +1,13 @@
 struct Welcome;
 
 impl Welcome {
-    pub fn index(&mut self, layout: ContentMustache) -> ContentMustache {
-        let mut bytes = vec![];
-        let mut form_bytes = vec![];
-        let mut data = HashMap::new();
-        let content_template = mustache::compile_path("templates/welcome/index.mustache").unwrap();
-        let form_element_template = mustache::compile_path("templates/welcome/_form.mustache").unwrap();
-        let _ = form_element_template.render(&mut form_bytes, &data);
-        data.insert("title", "kansi.in");
-        data.insert("form", str::from_utf8(&form_bytes).unwrap());
-        let _ = content_template.render(&mut bytes, &data);
+    pub fn index(&mut self) -> String {
+        let data: HashMap<&'static str, String> = HashMap::new();
+        let form_element = View.element("templates/welcome/_form.mustache", &data);
 
-        ContentMustache {
-            path: layout.path,
-            content:  str::from_utf8(&bytes).unwrap().to_string()
-        }
+        let mut hash: HashMap<&'static str, String> =  HashMap::new();
+        hash.insert("title", "kansi.in".to_string());
+        hash.insert("form", form_element);
+        View.element("templates/welcome/index.mustache", &hash)
     }
 }
