@@ -18,9 +18,11 @@ fn main() {
         let mut data = HashMap::new();
 
         data.insert("content", &*content_mustache.content);
+        data.insert("title", "sample");
+        data.insert("summary", "this is sample html");
         data.insert("copyright_year", "2017");
         return res.render(content_mustache.path, &data);
     });
 
-    let _ = server.listen("127.0.0.1:6767");
+    let _ = server.listen("127.0.0.1:6769");
 }
