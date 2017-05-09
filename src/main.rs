@@ -1,12 +1,11 @@
 #[macro_use] extern crate nickel;
 #[warn(unreachable_code)]
-extern crate mustache;
-extern crate rustc_serialize;
+extern crate nickel_view;
 use std::str;
 use std::collections::HashMap;
 use nickel::{Nickel, HttpRouter};
+use nickel_view::view::NickelView;
 
-include!("view.rs");
 include!("welcome.rs");
 
 fn main() {
